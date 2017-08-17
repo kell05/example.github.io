@@ -1,0 +1,79 @@
+# use collections to realize category
+collections:
+  my_categories:
+    output: true
+    permalink: /blog/category/:name/
+  my_tags:
+    output: true
+    permalink: /blog/tag/:name/  
+#sidebar names
+sidebar:
+  home:              home
+  about:             about
+  articles:          articles
+
+#navbar names
+navbar:
+  jian:              简
+  jianshu:           简书
+  
+# Permalinks
+permalink:           pretty
+
+# Conversion
+markdown:    kramdown
+highlighter: rouge
+excerpt_separator: "\n\n\n"
+
+# Setup
+title:               example
+name:                bigablecat
+namecn:              example
+tagline:             "'s blog"
+description:         "example's blog"
+url:                 "http://example.github.io"
+baseurl:             ''
+paginate:            5
+gems:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# About/contact
+author:
+  name:              example
+  url:               "http://example.github.io"
+  email:             "example@example.com"
+
+sass:
+  style: compressed
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  -
+    scope:
+      path: ""
+      type: my_categories
+    values:
+      layout: blog_by_category
+  
+  -
+    scope:
+      path: ""
+      type: my_tags
+    values:
+      layout: blog_by_tag
+    
+# Custom vars
+version:             1.0.0
