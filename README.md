@@ -51,3 +51,9 @@
 1. 找到目录example.github.io/_posts
 2. 新建一个后缀为.md的markdown文件,命名格式为yyyy-mm-dd-filename.md,例如2017-01-01-test.md
 3. 文件名不能包含中文
+
+### html样式
+1. md中可以直接插入html代码,显示用户自定义样式
+* 代码:
+```<span style="color: red;">红色字体</span>```
+* 显示效果:<span style="color: red;">红色字体</span>

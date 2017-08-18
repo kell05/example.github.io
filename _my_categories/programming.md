@@ -1,6 +1,6 @@
 ---
 slug: programming
 name: Programming
-cn:   programming
+cn:   编程
 color: '#242A3A'
 ---
