@@ -56,4 +56,4 @@
 1. md中可以直接插入html代码,显示用户自定义样式
 * 代码:
 ```<span style="color: red;">红色字体</span>```
-* 显示效果:<span style="color: red;">红色字体</span>
+* 显示效果:\<span style="color: red;"\>红色字体\<\/span\>
