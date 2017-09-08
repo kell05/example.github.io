@@ -1,0 +1,51 @@
+--- 
+layout: default 
+title: Home 
+---
+
+<script>
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r != null) return unescape(r[2]);
+		return null;
+	}
+	var keyword = getQueryString('q');
+	$.getJSON("/public/json/search.json").done(function(data) {
+		var htmlArr = new Array();
+		$.each(data,function( n, obj){
+			htmlArr.push('<div class="post">');
+			htmlArr.push('<h1 class="post-title">');
+			htmlArr.push('<a href="{{site.baseurl}}');
+			htmlArr.push(obj.url);
+			htmlArr.push('">');
+			htmlArr.push(obj.title);
+			htmlArr.push('</a></h1>');
+			htmlArr.push('<span class="post-date"></span>');
+			htmlArr.push(obj.date);
+			htmlArr.push('</span>');
+			htmlArr.push('<div class="post-content">');
+			htmlArr.push(obj.excerpt);
+			htmlArr.push('</div></div>');
+		});
+		$('#testpost').append(htmlArr.join('').toString());
+	});
+</script>
+<div id="testpost">
+</div>
+<div class="posts">
+	{% for post in site.posts %}
+	<div class="post">
+		<h1 class="post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+		<span class="post-date">{{ post.date | date_to_string }}</span>
+		<div class="post-content">
+			{% if post.brief %} {{ post.brief | markdownify | strip_html }} {% else %} {{ post.excerpt | strip_html }} {% endif %}
+		</div>
+	</div>
+
+	{% endfor %}
+</div>

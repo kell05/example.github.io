@@ -67,7 +67,11 @@
 					}
 				}, false);
 			})(document);
+			$('#search-btn').on('click',function(){
+				$('#search-bar').submit();
+			});
 		</script>
+	<script src="{{ site.baseurl }}/public/js/typeahead-custom.js"></script>
 	</body>
 
 </html>

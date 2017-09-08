@@ -1,11 +1,11 @@
-# use collections to realize category
 collections:
-  my_categories:
+  categories:
     output: true
-    permalink: /blog/category/:name/
-  my_tags:
+    permalink: /category/:name
+  tags:
     output: true
-    permalink: /blog/tag/:name/  
+    permalink: /tag/:name
+
 #sidebar names
 sidebar:
   home:              home
@@ -33,9 +33,36 @@ tagline:             "'s blog"
 description:         "example's blog"
 url:                 "http://example.github.io"
 baseurl:             ''
-paginate:            5
+
+autopages:
+  enabled: true
+  tags:
+    layouts: 
+      - category_or_tag.html
+    enabled: true
+  categories:
+    layouts:
+      - category_or_tag.html
+    enabled: true
+  collections:
+    enabled: false
+
+# Pagination Settings
+pagination:
+  enabled: true
+  per_page: 1
+  permalink: '/page:num/'
+  title: ':title | :num of :max'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+  trail: 
+    before: 2
+    after: 2
+
+
 gems:
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-feed
   - jekyll-seo-tag
 
@@ -64,16 +91,16 @@ defaults:
   -
     scope:
       path: ""
-      type: my_categories
+      type: categories
     values:
-      layout: blog_by_category
+      layout: category_or_tag
   
   -
     scope:
       path: ""
-      type: my_tags
+      type: tags
     values:
-      layout: blog_by_tag
+      layout: category_or_tag
     
 # Custom vars
 version:             1.0.0

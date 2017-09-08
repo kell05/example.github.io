@@ -25,9 +25,8 @@
       {% endif %}
     {% endfor %}
     <a class="sidebar-nav-item" id="articles" expanded='true'>{{site.sidebar.articles}}</a>
-   	{% assign categories = site.my_categories %}
-      {% for category in categories %}
-		<a class="sidebar-nav-item category-name-show" name="category-name" href="{{ site.baseurl }}/blog/category/{{category.slug}}/">- {{ category.slug }}</a>
+    {% for category in site.categories %}
+		<a class="sidebar-nav-item category-name-show" name="category-name" href="{{ site.baseurl }}{{category.url}}/">- {{ category.name }}</a>
     {% endfor %}
     <span class="sidebar-nav-item">&copy; {{ site.time | date: '%Y' }}. All rights reserved.</span>
   </nav>
