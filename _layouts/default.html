@@ -14,10 +14,22 @@
 				<div class="container">
 					<h3 class="masthead-title">
 					{% if page.url contains 'category' %}
-						<a href="{{page.url}}" title="Home">{{ page.cn }}</a>
-			            <small class="font-kt">by category</small>					    
+						{% if page.cn %}
+							{% assign category = page.cn %}					
+						{% else %}
+							{% assign categories = {{site.categories | where:'slug',{{page.pagination.category}}}} %}
+							{% assign category = categories[0].cn %}					
+						{% endif%}
+						<a href="{{page.url}}" title="Home">{{ category }}</a>
+			            <small class="font-kt">分类文章</small>					    
     				{% elsif page.url contains 'tag' %}
-    					<a href="{{ page.url }}" title="Home">{{ page.cn }}</a>
+						{% if page.cn %}
+							{% assign tag = page.cn %}					
+						{% else %}
+							{% assign tags = {{site.tags | where:'slug',{{page.pagination.tag}}}} %}
+							{% assign tag = tag[0].cn %}					
+						{% endif%}
+    					<a href="{{page.url }}" title="Home">{{ tag }}</a>
 			            <small>by tag</small>
     				{% else %}
     					<a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
